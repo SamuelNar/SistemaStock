@@ -62,5 +62,12 @@ public class EliminarProductoPanel extends JPanel {
             productoDAO.EliminarProductoPorNombre(nombre);
         }
         txtResultado.setText("Producto eliminado exitosamente.");
+        limpiarCampo();
+    }
+
+    public void limpiarCampo(){
+        txtResultado.setText("");
+        txtId.setText("");
+        txtNombre.setText("");
     }
 }

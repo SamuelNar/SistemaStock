@@ -1,14 +1,20 @@
 package org.example.Paneles;
 
 import org.example.Dao.CategoriaDao;
+import org.example.Dao.ProveedorDao;
 import org.example.Modelo.Categoria;
+import org.example.Modelo.Proveedor;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class AgregarCategoriaPanel extends JPanel {
     private JTextField txtNombre;
-    public AgregarCategoriaPanel() {
+    private JComboBox<Categoria> cmbCategoria;
+    private AgregarProductoPanel agregarProductoPanel;
+    public AgregarCategoriaPanel(AgregarProductoPanel agregarProductoPanel) {
+        this.agregarProductoPanel = agregarProductoPanel;
         setLayout(new GridLayout(2, 2, 5, 5));
 
         JLabel lblNombre = new JLabel("Nombre: ");
@@ -21,6 +27,7 @@ public class AgregarCategoriaPanel extends JPanel {
         btnAgregar.addActionListener(e -> {
             try {
                 agregarCategoria();
+                cargarCategoria();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -41,4 +48,13 @@ public class AgregarCategoriaPanel extends JPanel {
     public void limpiarCampos(){
         txtNombre.setText("");
     }
+
+    private void cargarCategoria(){
+        CategoriaDao categoriaDao = new CategoriaDao();
+        java.util.List<Categoria> categorias = categoriaDao.obtenerTodasCategorias();
+        for (Categoria categoria : categorias) {
+            cmbCategoria.addItem(categoria);
+        }
+    }
+
 }

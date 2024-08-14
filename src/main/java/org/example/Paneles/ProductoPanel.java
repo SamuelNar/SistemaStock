@@ -22,7 +22,7 @@ public class ProductoPanel extends JFrame {
 
         // Crear instancias de los paneles
         AgregarProductoPanel agregarProductoPanel = new AgregarProductoPanel();
-        AgregarCategoriaPanel agregarCategoriaPanel = new AgregarCategoriaPanel();
+        AgregarCategoriaPanel agregarCategoriaPanel = new AgregarCategoriaPanel(agregarProductoPanel);
         ObtenerProductoPanel obtenerProductoPanel = new ObtenerProductoPanel();
         EliminarProductoPanel eliminarProductoPanel = new EliminarProductoPanel();
         MostrarProductoPanel mostrarProductoPanel = new MostrarProductoPanel();

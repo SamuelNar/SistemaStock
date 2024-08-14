@@ -8,8 +8,6 @@ import org.example.Modelo.Producto;
 import org.example.Modelo.Proveedor;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.*;
 import java.util.List;
 
@@ -85,6 +83,11 @@ public class AgregarProductoPanel extends JPanel {
         for (Proveedor proveedor : proveedores) {
             cmbProveedor.addItem(proveedor);
         }
+    }
+
+    public void recargar(){
+        cargarProveedores();
+        cargarCategoria();
     }
     private void agregarProducto() {
         String nombre = txtNombre.getText();

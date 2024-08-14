@@ -5,10 +5,12 @@ import org.example.Modelo.Proveedor;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class AgregarProveedorPanel extends JPanel {
     private JTextField txtNombre;
     private JTextField txtContacto;
+    private JComboBox<Proveedor> cmbProveedor;
     public AgregarProveedorPanel() {
         setLayout(new GridLayout(2, 2, 5, 5));
         JLabel lblNombre = new JLabel("Nombre");
@@ -26,6 +28,7 @@ public class AgregarProveedorPanel extends JPanel {
         btnAgregar.addActionListener(e -> {
             try {
                 agregarProveedor();
+                cargarProveedores();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -49,5 +52,13 @@ public class AgregarProveedorPanel extends JPanel {
     public void limpiarCampos() {
         txtNombre.setText("");
         txtContacto.setText("");
+    }
+
+    private void cargarProveedores(){
+        ProveedorDao proveedorDao = new ProveedorDao();
+        List<Proveedor> proveedores = proveedorDao.obtenerTodosProveedores();
+        for (Proveedor proveedor : proveedores) {
+            cmbProveedor.addItem(proveedor);
+        }
     }
 }
