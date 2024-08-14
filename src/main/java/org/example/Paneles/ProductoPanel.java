@@ -22,24 +22,32 @@ public class ProductoPanel extends JFrame {
 
         // Crear instancias de los paneles
         AgregarProductoPanel agregarProductoPanel = new AgregarProductoPanel();
+        AgregarCategoriaPanel agregarCategoriaPanel = new AgregarCategoriaPanel();
         ObtenerProductoPanel obtenerProductoPanel = new ObtenerProductoPanel();
         EliminarProductoPanel eliminarProductoPanel = new EliminarProductoPanel();
         MostrarProductoPanel mostrarProductoPanel = new MostrarProductoPanel();
+        AgregarProveedorPanel agregarProveedorPanel = new AgregarProveedorPanel();
         // Añadir paneles al contenedor
         panelContenedor.add(agregarProductoPanel, "AgregarProducto");
         panelContenedor.add(obtenerProductoPanel, "ObtenerProducto");
         panelContenedor.add(eliminarProductoPanel,"EliminarProducto");
         panelContenedor.add(mostrarProductoPanel,"MostrarProductos");
+        panelContenedor.add(agregarCategoriaPanel,"agregarCategoria");
+        panelContenedor.add(agregarProveedorPanel,"agregarProveedor");
         // Crear el panel de navegación
         JPanel panelNavegacion = new JPanel();
         JButton btnAgregar = new JButton("Agregar Producto");
         JButton btnObtener = new JButton("Obtener Producto");
         JButton btnEliminar= new JButton("Eliminar Producto");
         JButton btnMostrar = new JButton("Mostrar Productos");
+        JButton btnAgregarC = new JButton("Agregar Categoría");
+        JButton btnAgregarP = new JButton("Agregar Proveedor");
         panelNavegacion.add(btnAgregar);
         panelNavegacion.add(btnObtener);
         panelNavegacion.add(btnEliminar);
         panelNavegacion.add(btnMostrar);
+        panelNavegacion.add(btnAgregarC);
+        panelNavegacion.add(btnAgregarP);
         // Acción para cambiar al panel de agregar producto
         btnAgregar.addActionListener(new ActionListener() {
             @Override
@@ -67,6 +75,20 @@ public class ProductoPanel extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(panelContenedor,"MostrarProductos");
+            }
+        });
+
+        btnAgregarC.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(panelContenedor,"agregarCategoria");
+            }
+        });
+
+        btnAgregarP.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(panelContenedor,"agregarProveedor");
             }
         });
         // Configurar la ventana principal
